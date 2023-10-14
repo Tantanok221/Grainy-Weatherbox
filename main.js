@@ -13,7 +13,7 @@ const DOM = {
 
 }
 try {
-    var data = await API.get(key.KEY)   
+    // var data = await API.get(key.KEY)   
 }catch(error)
 {
     console.error(error)
