@@ -1,15 +1,15 @@
 import './sass/main.sass'
-import FetchWrapper from './lib/fetchWrapper'
+import FetchWrapper from './lib/helper/fetchWrapper'
 import {fromUnixTime,format} from 'date-fns'
 import init from "./lib/init"
 import Chart from 'chart.js/auto'
-import DayFilter from "./lib/DayFilter"
+import DateFilter from "./lib/helper/DateFilter"
 
+const chart = document.getElementById("myChart")
 
 const FORECASTAPI = new FetchWrapper(`https://api.openweathermap.org/data/2.5/forecast?id=1733046&appid=`)
-const chart = document.getElementById("myChart")
 const extract = []
-// const ALLDATA = await FORECASTAPI.get(key.KEY)
+const ALLDATA = await FORECASTAPI.get(key.KEY)
 ALLDATA.list.forEach(DATA => {
     let Nextract = {
         icon: DATA.weather[0].id,
@@ -21,10 +21,11 @@ ALLDATA.list.forEach(DATA => {
     }
     extract.push(Nextract)
 })
-
-const FiveDay = DayFilter(extract)
-console.log(FiveDay)
-
+const futureForecast = {
+    time: DateFilter(extract,1,8).map(data =>  data.time),
+    temperature: DateFilter(extract,1,8).map(data =>  data.temperature)
+}  
+console.log(futureForecast)
 // init()
 new Chart(
     chart,
@@ -35,3 +36,4 @@ new Chart(
 )
 
 
+const FiveDayIcon = DateFilter(extract,8,5).map(data =>  data.icon) // Filter future five date(include today) data based on the user time
