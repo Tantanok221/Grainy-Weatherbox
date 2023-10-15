@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://kit.fontawesome.com/354e98e1a0.js" crossorigin="anonymous"></script>
         <script src="./API.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script type="module" src="/main.js"></script>
 
-        <title>Vite App</title>
+        <title>Grainy Weather App</title>
     </head>
     <body id="bodyGradient">
         <div class="grainy"></div>
@@ -24,13 +25,16 @@
                         <i class="fa-solid fa-wind"></i> <p class="speed">5km/h</p>
                     </div>
                     <div class="bar"></div>
-                    <div class="info pressure">
+                    <div class="info">
                         <i class="fa-regular fa-clock"></i> <p class="pressure">1011hPa</p> 
                     </div>
                     <div class="bar"></div>
                     <div class="info">
                         <i class="fas fa-water"></i> <p class="humidity">20%</p>
                     </div>
+                </div>
+                <div>
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
