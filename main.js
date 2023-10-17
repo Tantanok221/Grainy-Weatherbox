@@ -29,7 +29,7 @@ if(window.innerWidth >= 640) {
 
 
 
-init()
+init() // Update html field that are related to current time
 const FiveDay = {
     icon: DateFilter(DATA,8,5).map(data =>  data.icon), 
     date: DateFilter(DATA,8,5).map(data =>  format(data.time,"dd MMM")),
